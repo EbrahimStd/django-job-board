@@ -1,8 +1,8 @@
-Jop:
+job:
     - title
     - location
     - desc
-    - JopType
+    - jobType
     - Date
     - salary
     - category
