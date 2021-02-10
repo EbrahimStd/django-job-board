@@ -1,17 +1,14 @@
 from django.shortcuts import render
+from .models import Job
 
 # Create your views here.
 
-<<<<<<< HEAD
 def job_list(request):
-    pass
+    job_list = Job.objects.all()
+    context = {'jobs': job_list}
+    return render(request, 'job/job_list.html', context)
 
-def job_detail(request):
-    pass
-=======
-def jop_list(request):
-    pass
-
-def jop_details(request, id):
-    pass
->>>>>>> 9f27d01de65174183611be96c81acc0e8acb4aca
+def job_detail(request, id):
+    job_list = Job.objects.get(id=id)
+    context = {'job': job_list}
+    return render(request, 'job/job_detail.html', context)
