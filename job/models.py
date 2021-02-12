@@ -15,6 +15,12 @@ JOB_TYPE = (
     ('Part Time', 'Part Time')
 )
 
+
+def image_upload(instance, filename):
+    imageName, extension = filename.split('.')
+    return "jobs/%s/%s.%s"%(instance.id, instance.id, extension)
+
+
 class Job(models.Model): # table
     title = models.CharField(max_length=100) # column
     # location
@@ -25,6 +31,9 @@ class Job(models.Model): # table
     salary = models.IntegerField(default=0)
     experience = models.IntegerField(default=1)
     category = models.ForeignKey('Category', on_delete = models.CASCADE)
+    image = models.ImageField(upload_to=image_upload)
+
+    # slug = models.SlugField()
 
     # to return title of job at any new user
     def __str__(self):
