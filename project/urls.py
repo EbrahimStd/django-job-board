@@ -20,6 +20,15 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+
+    # User Authentication
+    # this is built in Django
+    path('accounts/', include('django.contrib.auth.urls')),
+    # this is my Design
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+
+
     # namespace='jobs' will called in Html files
     path('jobs/', include('job.urls', namespace='jobs'))
 ]
